@@ -1,9 +1,11 @@
 package Utils;
+import java.nio.file.Path;
 
 public class test {
     public static void main(String[] args) {
 
-        String pathBase = "/home/GabrielDuque/Desktop/Dados_covid/";
+        String pathAbsolutoPastaProjeto = System.getProperty("user.dir");
+        String pathBase = pathAbsolutoPastaProjeto + "/src/Dados/";
 
         // Caminho dos arquivos sem estruturas de dados aplicados
         String path_Arquivos_Medio_Caso = pathBase + "dados_medio_caso.csv";
@@ -108,6 +110,7 @@ public class test {
         Storage storage = new Storage();
         Sort sort = new Sort();
         storage.ReadFile(path_Arquivos_Medio_Caso);
+        storage.WriteFile(path_CountingSort_Deaths, storage.getData());
 
         // ******************** ORDENAÇÕES MÉDIO CASO *****************
 
@@ -187,10 +190,10 @@ public class test {
         storage.ReadFile(path_Arquivos_Medio_Caso);
 
         // MÉDIO CASO - Counting Sort
-        sort.coutingSortForDeaths(storage.getData());
+        sort.heapSortForDeaths(storage.getData());
         storage.WriteFile(path_CountingSort_Deaths, storage.getData());
 
-        sort.coutingSortForConfirmed(storage.getData());
+        sort.heapSortForDeaths(storage.getData());
         storage.WriteFile(path_CountingSort_Confirmeds, storage.getData());
 
         storage = new Storage();
@@ -228,14 +231,8 @@ public class test {
         sort.quickSortMed3ForDeaths(storage.getData(), 0, storage.getData().length - 1);
         storage.WriteFile(path_QuickSortMed3_Deaths_pior_caso, storage.getData());
 
-        storage = new Storage();
-        storage.ReadFile(path_Arquivos_Medio_Caso);
-
-        sort.coutingSortForDeaths(storage.getData());
+        sort.heapSortForDeaths(storage.getData());
         storage.WriteFile(path_CountingSort_Deaths_pior_caso, storage.getData());
-
-        storage = new Storage();
-        storage.ReadFile(path_Arquivos_Pior_Caso_deaths);
 
         sort.heapSortForDeaths(storage.getData());
         storage.WriteFile(path_HeapSort_Deaths_pior_caso, storage.getData());
@@ -262,11 +259,8 @@ public class test {
         storage = new Storage();
         storage.ReadFile(path_Arquivos_Medio_Caso);
 
-        sort.coutingSortForConfirmed(storage.getData());
+        sort.heapSortForConfirmed(storage.getData());
         storage.WriteFile(path_CountingSort_Confirmeds_pior_caso, storage.getData());
-
-        storage = new Storage();
-        storage.ReadFile(path_Arquivos_Pior_Caso_confirmeds);
 
         sort.heapSortForConfirmed(storage.getData());
         storage.WriteFile(path_HeapSort_Confirmeds_pior_caso, storage.getData());
@@ -312,14 +306,8 @@ public class test {
         sort.quickSortMed3ForDeaths(storage.getData(), 0, storage.getData().length - 1);
         storage.WriteFile(path_QuickSortMed3_Deaths_melhor_caso, storage.getData());
 
-        storage = new Storage();
-        storage.ReadFile(path_Arquivos_Medio_Caso);
-
-        sort.coutingSortForDeaths(storage.getData());
+        sort.heapSortForDeaths(storage.getData());
         storage.WriteFile(path_CountingSort_Deaths_melhor_caso, storage.getData());
-
-        storage = new Storage();
-        storage.ReadFile(path_Arquivos_Melhor_Caso_deaths);
 
         sort.heapSortForDeaths(storage.getData());
         storage.WriteFile(path_HeapSort_Deaths_melhor_caso, storage.getData());
@@ -343,14 +331,8 @@ public class test {
         sort.quickSortMed3ForConfirmeds(storage.getData(), 0, storage.getData().length - 1);
         storage.WriteFile(path_QuickSortMed3_Confirmeds_melhor_caso, storage.getData());
 
-        storage = new Storage();
-        storage.ReadFile(path_Arquivos_Medio_Caso);
-
-        sort.coutingSortForConfirmed(storage.getData());
+        sort.heapSortForConfirmed(storage.getData());
         storage.WriteFile(path_CountingSort_Confirmeds_melhor_caso, storage.getData());
-
-        storage = new Storage();
-        storage.ReadFile(path_Arquivos_Melhor_Caso_confirmeds);
 
         sort.heapSortForConfirmed(storage.getData());
         storage.WriteFile(path_HeapSort_Confirmeds_melhor_caso, storage.getData());
